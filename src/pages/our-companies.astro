@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const companies = [
+  {
+    name: 'Surfside Accounting Services',
+    abbr: 'SSA',
+    logo: '/images/logos/SSA.png',
+    url: 'https://surfsideaccounting.com.au',
+    description: 'Surfside Accounting delivers comprehensive accounting, tax, and business advisory services. As the financial backbone of the FRM group, Surfside ensures every client has a clear understanding of their financial position — the foundation upon which all other strategies are built.',
+  },
+  {
+    name: 'Property Management Australia',
+    abbr: 'PMA',
+    logo: '/images/logos/PMA.png',
+    url: 'https://pmaqld.com',
+    description: 'PMA provides an educational platform for clients to develop sufficient resources to meet their lifestyle goals through the use of property as a wealth creation tool. As part of FRM\'s integrated approach, PMA clients benefit from coordinated advice across accounting, finance, and property strategy.',
+  },
+  {
+    name: 'Specialised Finance Australia',
+    abbr: 'SFA',
+    logo: '/images/logos/SFA.png',
+    url: 'https://sfa.net.au',
+    description: 'SFA provides tailored lending solutions for clients whose needs fall outside traditional banking criteria. With deep expertise in specialised finance, SFA works within the FRM ecosystem to find the right funding solution for every situation.',
+  },
+  {
+    name: 'Solar Finance Australia',
+    abbr: 'SOFA',
+    logo: '/images/logos/SOFA.png',
+    url: 'https://solarfinanceaustralia.com.au',
+    description: 'Solar Finance Australia provides purpose-built financing solutions for residential and commercial solar installations. We make the transition to clean energy accessible by removing the upfront cost barrier and delivering finance options tailored to the solar industry.',
+  },
+  {
+    name: 'Reno Finance Australia',
+    abbr: 'RFA',
+    logo: '/images/logos/RFA.png',
+    url: 'https://renofinanceaustralia.com.au',
+    description: 'Reno Finance Australia offers specialised lending products designed for home renovation projects. Whether it\'s a minor refresh or a major renovation, RFA connects homeowners with finance solutions that align with their property and financial goals.',
+  },
+  {
+    name: 'Task Force Consulting',
+    abbr: 'TFC',
+    logo: '/images/logos/TFC.png',
+    url: '#',
+    description: 'Task Force Consulting provides asset finance solutions for machinery, equipment, and commercial assets. TFC helps businesses acquire the tools they need to operate and grow, with tailored financing structures that align with cash flow and business objectives.',
+  },
+];
+---
+
+<BaseLayout title="Our Companies" description="FRM Consulting Group operates six integrated businesses spanning accounting, property, asset finance, solar finance, renovation finance, and specialised lending.">
+
+  <!-- Page Header -->
+  <section class="bg-navy py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="w-16 h-1 bg-frm-green mb-6"></div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Our Companies</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">
+          FRM Consulting Group operates a portfolio of integrated businesses across the financial services spectrum. Each company is a specialist in its field — together, they deliver the holistic outcomes our clients need.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Companies List -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-12">
+        {companies.map((company, i) => (
+          <div class:list={[
+            'flex flex-col md:flex-row gap-8 items-center p-8 rounded-2xl border border-gray-100',
+            i % 2 === 0 ? 'bg-white' : 'bg-gray-50',
+          ]}>
+            <div class="w-full md:w-56 shrink-0 flex items-center justify-center">
+              <img
+                src={company.logo}
+                alt={`${company.name} logo`}
+                class="h-20 max-w-[200px] object-contain"
+              />
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-bold text-navy mb-2">{company.name}</h2>
+              <p class="text-frm-gray leading-relaxed mb-4">{company.description}</p>
+              <a
+                href={company.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center text-frm-blue font-medium hover:underline text-sm"
+              >
+                Visit {company.abbr} website
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-navy mb-4">Interested in Partnering With Us?</h2>
+      <p class="text-frm-gray mb-6">
+        We're always looking for quality referral partners and collaborators across the financial services industry.
+      </p>
+      <a href="/contact" class="inline-flex items-center px-8 py-3 bg-navy text-white font-semibold rounded-lg hover:bg-navy/90 transition-colors">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

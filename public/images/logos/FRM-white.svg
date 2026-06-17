@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 0 630 220" fill="white">
+  <!-- Geometric interlocking diamonds icon -->
+  <g transform="translate(0, 5)">
+    <!-- Top diamond (outer) -->
+    <polygon points="58,0 145,50 145,90 58,40" />
+    <polygon points="58,0 -28,50 -28,90 58,40" />
+    <polygon points="145,50 145,90 58,140 58,100" />
+    <polygon points="-28,50 -28,90 58,140 58,100" />
+    <!-- Top diamond cutout (creates hollow frame) -->
+    <polygon points="58,25 110,55 110,80 58,110 6,80 6,55" fill="#152B4F" />
+
+    <!-- Bottom diamond (outer) - offset down and right -->
+    <polygon points="100,70 187,120 187,160 100,110" />
+    <polygon points="100,70 14,120 14,160 100,110" />
+    <polygon points="187,120 187,160 100,210 100,170" />
+    <polygon points="14,120 14,160 100,210 100,170" />
+    <!-- Bottom diamond cutout -->
+    <polygon points="100,95 152,125 152,150 100,180 48,150 48,125" fill="#152B4F" />
+
+    <!-- Interlocking overlap patches - bottom passes in front on left -->
+    <polygon points="58,100 58,140 14,120 14,90" fill="#152B4F" />
+    <polygon points="14,90 58,65 58,100 14,120" fill="white" />
+    <polygon points="14,120 58,140 58,100 14,90" fill="white" />
+
+    <!-- Fix overlap: top passes in front on right -->
+    <polygon points="100,70 145,90 145,50 100,70" fill="white" />
+  </g>
+
+  <!-- FRM Text -->
+  <g transform="translate(210, 25)">
+    <!-- F -->
+    <path d="M0,10 L0,160 L30,160 L30,100 L75,100 L75,75 L30,75 L30,35 L85,35 L85,10 Z" />
+    <!-- R -->
+    <path d="M105,10 L105,160 L135,160 L135,105 L155,105 L185,160 L220,160 L185,100 C200,92 210,78 210,60 C210,30 190,10 155,10 Z M135,35 L155,35 C175,35 182,45 182,60 C182,75 175,82 155,82 L135,82 Z" />
+    <!-- M -->
+    <path d="M240,10 L240,160 L270,160 L270,65 L300,120 L315,120 L345,65 L345,160 L375,160 L375,10 L350,10 L307,95 L265,10 Z" />
+  </g>
+</svg>

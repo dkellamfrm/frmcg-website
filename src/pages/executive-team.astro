@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: 'Tony Devin',
+    title: 'Group CEO',
+    image: '/images/headshots/tony.jpeg',
+    bio: 'Tony is the founder and Group CEO of FRM Consulting Group, bringing decades of experience in financial services, business strategy, and operational leadership. With a deep understanding of the Australian financial landscape, Tony has built FRM into an integrated group that delivers coordinated outcomes across accounting, property, and specialised finance. His vision for a holistic, client-first approach drives everything the group does.',
+  },
+  {
+    name: 'David Kellam',
+    title: 'CMO & CTO',
+    image: '/images/headshots/david.png',
+    bio: 'David serves as both Chief Marketing Officer and Chief Technology Officer for FRM Consulting Group, leading the group\'s digital strategy, technology infrastructure, and market positioning. With extensive experience in technology-driven business transformation, David ensures FRM\'s operating companies are equipped with the systems and digital presence they need to deliver a seamless client experience.',
+  },
+  {
+    name: 'Brendan Robinson',
+    title: 'Group Business Development Manager',
+    image: '/images/headshots/brendan.jpeg',
+    bio: 'Brendan leads business development across the FRM group, building and managing the referral relationships and partnerships that drive growth across all operating companies. With strong networks across the financial services industry, Brendan is the key link between FRM\'s capabilities and the clients and partners who benefit from them.',
+  },
+];
+---
+
+<BaseLayout title="Executive Team" description="Meet the leadership team behind FRM Consulting Group — Tony Devin, David Kellam, and Brendan Robinson.">
+
+  <!-- Page Header -->
+  <section class="bg-navy py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="w-16 h-1 bg-frm-green mb-6"></div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Executive Team</h1>
+        <p class="text-xl text-gray-300 leading-relaxed">
+          FRM Consulting Group is led by an experienced team with deep expertise across financial services, technology, and business development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Members -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-16">
+        {team.map((member, i) => (
+          <div class:list={[
+            'flex flex-col md:flex-row gap-8 md:gap-12 items-start',
+            i % 2 !== 0 && 'md:flex-row-reverse',
+          ]}>
+            <div class="w-full md:w-72 shrink-0">
+              <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div class="flex-1 pt-2">
+              <div class="w-12 h-1 bg-frm-blue mb-4"></div>
+              <h2 class="text-2xl md:text-3xl font-bold text-navy mb-1">{member.name}</h2>
+              <p class="text-frm-blue font-medium mb-4">{member.title}</p>
+              <p class="text-frm-gray leading-relaxed">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-navy mb-4">Want to Connect?</h2>
+      <p class="text-frm-gray mb-6">
+        Reach out to discuss how FRM Consulting Group can work with you.
+      </p>
+      <a href="/contact" class="inline-flex items-center px-8 py-3 bg-navy text-white font-semibold rounded-lg hover:bg-navy/90 transition-colors">
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
