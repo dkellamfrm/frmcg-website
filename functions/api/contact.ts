@@ -22,7 +22,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   const origin = request.headers.get('Origin') || '';
-  const allowedOrigins = ['https://frmcg.com.au', 'https://www.frmcg.com.au'];
+  const allowedOrigins = ['https://frmcg.com.au', 'https://www.frmcg.com.au', 'https://frmcg-website.pages.dev'];
   if (!allowedOrigins.includes(origin)) {
     return new Response(JSON.stringify({ error: 'Forbidden' }), {
       status: 403,
@@ -77,23 +77,33 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
     const userAgent = request.headers.get('User-Agent') || 'unknown';
 
-    await env.DB.prepare(
-      `INSERT INTO submissions (site, source_page, first_name, last_name, email, phone, company, message, ip, user_agent)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(
-      'FRMCG',
-      data.sourcePage || 'contact',
-      data.firstName,
-      data.lastName,
-      data.email,
-      data.phone || '',
-      data.company || '',
-      data.message,
-      ip,
-      userAgent
-    ).run();
+    // Log to D1
+    try {
+      await env.DB.prepare(
+        `INSERT INTO submissions (site, source_page, first_name, last_name, email, phone, company, message, ip, user_agent)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      ).bind(
+        'FRMCG',
+        data.sourcePage || 'contact',
+        data.firstName,
+        data.lastName,
+        data.email,
+        data.phone || '',
+        data.company || '',
+        data.message,
+        ip,
+        userAgent
+      ).run();
+    } catch (dbErr) {
+      console.error('D1 insert failed:', dbErr);
+    }
 
-    await sendEmailNotification(env, data, ip);
+    // Send email
+    try {
+      await sendEmailNotification(env, data, ip);
+    } catch (emailErr) {
+      console.error('Email send failed:', emailErr);
+    }
 
     return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
   } catch (err) {
