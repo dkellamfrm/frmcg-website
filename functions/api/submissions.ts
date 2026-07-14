@@ -104,8 +104,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err) {
-    console.error('Query error:', err);
-    return new Response(JSON.stringify({ error: 'Failed to fetch submissions' }), {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('Query error:', message);
+    return new Response(JSON.stringify({ error: 'Failed to fetch submissions', detail: message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
