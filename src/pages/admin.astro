@@ -37,6 +37,7 @@
       .site-sofa { background: #fef3c7; color: #92400e; }
       .site-pma { background: #fce7f3; color: #9d174d; }
       .site-frmcg { background: #e5e7eb; color: #374151; }
+      .site-cdmrp { background: #fef9c3; color: #854d0e; }
       .msg-cell { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
       .msg-cell:hover { white-space: normal; }
       .pagination { display: flex; justify-content: space-between; align-items: center; padding: 16px; border-top: 1px solid #e5e7eb; }
@@ -76,6 +77,7 @@
           <option value="SOFA">SOFA</option>
           <option value="PMA">PMA</option>
           <option value="FRMCG">FRMCG</option>
+          <option value="CDMRP">CDMRP</option>
         </select>
         <input type="search" id="search-filter" placeholder="Search name, email, message..." />
       </div>
@@ -133,6 +135,7 @@
         if (s === 'tas') return 'site-tas';
         if (s === 'sofa') return 'site-sofa';
         if (s === 'pma') return 'site-pma';
+        if (s === 'cdmrp') return 'site-cdmrp';
         return 'site-frmcg';
       }
 
